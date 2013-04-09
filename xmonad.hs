@@ -7,6 +7,7 @@ import qualified Data.Map as M
 main = xmonad xfceConfig
         { keys = newKeys
         , borderWidth = 4
+        , terminal = "lxterminal"
         }
 
 myManageHook = composeAll . concat $
