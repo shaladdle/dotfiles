@@ -1,17 +1,14 @@
 import XMonad
-import XMonad.Config.Kde
+import XMonad.Config.Xfce
 import XMonad.Actions.CycleWS
-import qualified XMonad.StackSet as W -- to shift and float windows
+import qualified XMonad.StackSet as W
 import qualified Data.Map as M
- 
-main = xmonad kde4Config
-    { modMask = mod4Mask -- use the Windows button as mod
-    , manageHook = manageHook kde4Config <+> myManageHook
-    , terminal = "roxterm"
-    , borderWidth = 4
-    , keys = newKeys
-    }
- 
+
+main = xmonad xfceConfig
+        { keys = newKeys
+        , borderWidth = 4
+        }
+
 myManageHook = composeAll . concat $
     [ [ className   =? c --> doFloat           | c <- myFloats]
     , [ title       =? t --> doFloat           | t <- myOtherFloats]
@@ -28,4 +25,4 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
     , ((modm .|. shiftMask, xK_h), prevWS)
     ]
 
-newKeys x = myKeys x `M.union` keys kde4Config x
+newKeys x = myKeys x `M.union` keys xfceConfig x
