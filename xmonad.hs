@@ -1,13 +1,11 @@
 import XMonad
-import XMonad.Config.Kde
 import XMonad.Actions.CycleWS
 import qualified XMonad.StackSet as W -- to shift and float windows
 import qualified Data.Map as M
  
-main = xmonad kde4Config
-    { modMask = mod4Mask -- use the Windows button as mod
-    , manageHook = manageHook kde4Config <+> myManageHook
-    , terminal = "roxterm"
+main = xmonad defaultConfig
+    { manageHook = manageHook defaultConfig <+> myManageHook
+    , terminal = "gnome-terminal"
     , borderWidth = 4
     , keys = newKeys
     }
@@ -28,4 +26,4 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
     , ((modm .|. shiftMask, xK_h), prevWS)
     ]
 
-newKeys x = myKeys x `M.union` keys kde4Config x
+newKeys x = myKeys x `M.union` keys defaultConfig x
