@@ -16,7 +16,7 @@ myManageHook = composeAll . concat $
     , [ className   =? c --> doF (W.shift "2") | c <- webApps]
     , [ className   =? c --> doF (W.shift "3") | c <- ircApps]
     ]
-  where myFloats      = ["MPlayer", "Gimp", "Plasma-desktop"]
+  where myFloats      = ["MPlayer", "Gimp", "Xfce4-panel"]
         myOtherFloats = ["alsamixer"]
         webApps       = ["Firefox-bin", "Opera"] -- open on desktop 2
         ircApps       = ["Ksirc"]                -- open on desktop 3
