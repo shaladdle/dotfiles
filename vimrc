@@ -17,3 +17,7 @@ set t_Co=256
 set background=dark
 set backspace=indent,eol,start
 highlight Comment ctermfg=yellow
+
+"highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
