@@ -55,4 +55,4 @@ function ToggleWrap()
     endif
 endfunction
 
-"call pathogen#infect()
+execute pathogen#infect()
