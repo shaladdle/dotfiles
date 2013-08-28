@@ -123,3 +123,5 @@ ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}*%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #%{$FG[237]%}------------------------------------------------------------%{$reset_color%}
+
+source .bash_mine
