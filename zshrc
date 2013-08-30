@@ -85,6 +85,9 @@ bindkey "\e[Z" reverse-menu-complete # Shift+Tab
 # for rxvt
 bindkey "\e[7~" beginning-of-line # Home
 bindkey "\e[8~" end-of-line # End
+# for rxvt
+bindkey "\eOH" beginning-of-line # Home
+bindkey "\eOF" end-of-line # End
 
 # show vi mode
 vim_ins_mode="%{$fg[blue]%}[INSERT]%{$reset_color%}"
@@ -123,3 +126,4 @@ ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}*%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #%{$FG[237]%}------------------------------------------------------------%{$reset_color%}
+export GOPATH=~/go
