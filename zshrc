@@ -124,4 +124,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #%{$FG[237]%}------------------------------------------------------------%{$reset_color%}
 
-source .bash_mine
+if [ -e .zshrc_local ]
+then
+    source .zshrc_local
+fi
