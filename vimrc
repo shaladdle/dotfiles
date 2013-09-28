@@ -18,8 +18,8 @@ hi CursorLine term=bold cterm=bold gui=bold ctermbg=darkgray guibg=gray30
 set t_Co=256
 
 set backspace=indent,eol,start
-"set background=dark
-"highlight Comment ctermfg=yellow
+
+nnoremap <silent> <Leader>o :NERDTreeToggle<CR>
 
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function ToggleWrap()
