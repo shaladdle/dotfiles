@@ -21,6 +21,7 @@ set backspace=indent,eol,start
 "set background=dark
 "highlight Comment ctermfg=yellow
 
+noremap <silent> <Leader>t :NERDTreeTabToggle<CR>
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function ToggleWrap()
     if &wrap
