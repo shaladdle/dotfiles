@@ -1,11 +1,10 @@
 export EDITOR=vim
 #alias ls="ls --color=always"
 
-
-
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
+if [ -e .zshrc_local ]
+then
+    source .zshrc_local
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -126,8 +125,3 @@ ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}*%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 #%{$FG[237]%}------------------------------------------------------------%{$reset_color%}
-
-if [ -e .zshrc_local ]
-then
-    source .zshrc_local
-fi
