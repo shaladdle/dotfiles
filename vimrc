@@ -21,6 +21,7 @@ set backspace=indent,eol,start
 
 nnoremap <silent> <Leader>o :NERDTreeToggle<CR>
 
+noremap <silent> <Leader>t :NERDTreeTabToggle<CR>
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 function ToggleWrap()
     if &wrap
