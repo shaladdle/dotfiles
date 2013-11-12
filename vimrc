@@ -21,7 +21,20 @@ set backspace=indent,eol,start
 "set background=dark
 "highlight Comment ctermfg=yellow
 
+noremap <silent> <Leader>o :NERDTreeTabsToggle<CR>
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
+noremap <silent> <Leader>s :call ToggleSpell()<CR>
+
+function ToggleSpell()
+    if &spell
+        setlocal nospell
+        set spell&
+    else
+        setlocal spell
+        set spell
+    endif
+endfunction
+
 function ToggleWrap()
     if &wrap
         echo "Wrap OFF"
