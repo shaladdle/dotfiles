@@ -19,10 +19,20 @@ set t_Co=256
 
 set backspace=indent,eol,start
 
-nnoremap <silent> <Leader>o :NERDTreeToggle<CR>
-
-noremap <silent> <Leader>t :NERDTreeTabToggle<CR>
+noremap <silent> <Leader>o :NERDTreeTabsToggle<CR>
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
+noremap <silent> <Leader>s :call ToggleSpell()<CR>
+
+function ToggleSpell()
+    if &spell
+        setlocal nospell
+        set spell&
+    else
+        setlocal spell
+        set spell
+    endif
+endfunction
+
 function ToggleWrap()
     if &wrap
         echo "Wrap OFF"
