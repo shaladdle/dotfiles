@@ -15,6 +15,9 @@ set autoread
 set cursorline
 hi CursorLine term=bold cterm=bold gui=bold ctermbg=darkgray guibg=gray30
 
+set colorcolumn=81
+hi ColorColumn ctermbg=4
+
 set t_Co=256
 
 set backspace=indent,eol,start
