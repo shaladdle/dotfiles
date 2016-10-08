@@ -13,5 +13,3 @@ alias cb='cargo build'
 
 # vim
 alias v='vim'
-
-EDITOR="mvim -v"
