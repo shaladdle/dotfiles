@@ -11,4 +11,4 @@ alias gl='git lg'
 alias cb='cargo build'
 
 # vim
-alias v='vim'
+alias v='nvim'
