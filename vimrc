@@ -1,99 +1,65 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+  " Required:
+  set runtimepath+=/home/adam/.vim/bundle/neobundle.vim/
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Required:
+call neobundle#begin(expand('/home/adam/.vim/bundle'))
 
-Plugin 'fatih/vim-go'
-Plugin 'ctrlp.vim'
-Plugin 'fugitive.vim'
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'vim-scripts/xoria256.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'cespare/vim-toml'
+"NeoBundle 'mhinz/vim-signify'
 
-set tabstop=4 
-set shiftwidth=4 
-set expandtab
-set number 
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+nnoremap <Leader>u :UndotreeToggle<cr>
+nnoremap <Leader>b :CtrlPBuffer<cr>
+nnoremap <Leader>e :CtrlP<cr>
+nnoremap <Leader>] :YcmCompleter GoTo<cr>
+nmap <C-k> :RustFmt<cr>
+
+set tabstop=4
+set shiftwidth=4
+set number
+
+"let g:rustfmt_autosave = 1
+let g:jsx_ext_required = 0
+let g:ctrlp_root_markers = ['.git', 'CTRLP_MARKER']
+set wildignore+=*/target/*
+
 set ruler
-set nowrap 
-
-syntax on                
-colorscheme twilight256
-
-set autoread
 set cursorline
-hi CursorLine term=bold cterm=bold gui=bold ctermbg=darkgray guibg=gray30
-
-set colorcolumn=81
-hi ColorColumn ctermbg=blue
-
 set t_Co=256
-
-set backspace=indent,eol,start
-
-nnoremap <Leader>b :CtrlPBuffer<CR>
-
-noremap <silent> <Leader>w :call ToggleWrap()<CR>
-noremap <silent> <Leader>s :call ToggleSpell()<CR>
-
-function ToggleSpell()
-    if &spell
-        setlocal nospell
-        set spell&
-    else
-        setlocal spell
-        set spell
-    endif
-endfunction
-
-function ToggleWrap()
-    if &wrap
-        echo "Wrap OFF"
-        setlocal nowrap
-        set virtualedit=all
-        silent! nunmap <buffer> <Up>
-        silent! nunmap <buffer> <Down>
-        silent! nunmap <buffer> <Home>
-        silent! nunmap <buffer> <End>
-        silent! iunmap <buffer> <Up>
-        silent! iunmap <buffer> <Down>
-        silent! iunmap <buffer> <Home>
-        silent! iunmap <buffer> <End>
-    else
-        echo "Wrap ON"
-        setlocal wrap linebreak nolist
-        set virtualedit=
-        setlocal display+=lastline
-        noremap  <buffer> <silent> <Home> g<Home>
-        noremap  <buffer> <silent> <End>  g<End>
-        inoremap <buffer> <silent> <Home> <C-o>g<Home>
-        inoremap <buffer> <silent> <End>  <C-o>g<End>
-        nnoremap 0 g0
-        nnoremap $ g$
-        nnoremap j gj
-        nnoremap k gk
-        vnoremap 0 g0
-        vnoremap $ g$
-        vnoremap j gj
-        vnoremap k gk
-    endif
-endfunction
+color xoria256
+syntax on
+match ErrorMsg '\%>100v.\+'
+autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
